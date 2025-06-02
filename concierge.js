@@ -4,7 +4,7 @@ const conciergeModule = {
     render: () => {},
     logic: () => {}
 };
-RoomForImprovementSystem.modules.register('concierge', conciergeModule);
+RoomForImprovementSystem.register('concierge', conciergeModule);
 
 // scripts/guest-services.js
 const guestServicesModule = {
@@ -12,7 +12,7 @@ const guestServicesModule = {
     render: () => {},
     logic: () => {}
 };
-RoomForImprovementSystem.modules.register('guestServices', guestServicesModule);
+RoomForImprovementSystem.register('guestServices', guestServicesModule);
 
 // scripts/sales-marketing.js
 const salesMarketingModule = {
@@ -20,7 +20,7 @@ const salesMarketingModule = {
     render: () => {},
     logic: () => {}
 };
-RoomForImprovementSystem.modules.register('salesMarketing', salesMarketingModule);
+RoomForImprovementSystem.register('salesMarketing', salesMarketingModule);
 
 // scripts/uniformed-services.js
 const uniformedServicesModule = {
@@ -28,7 +28,7 @@ const uniformedServicesModule = {
     render: () => {},
     logic: () => {}
 };
-RoomForImprovementSystem.modules.register('uniformedServices', uniformedServicesModule);
+RoomForImprovementSystem.register('uniformedServices', uniformedServicesModule);
 
 // scripts/food-beverage.js
 const foodAndBeverageModule = {
@@ -36,7 +36,7 @@ const foodAndBeverageModule = {
     render: () => {},
     logic: () => {}
 };
-RoomForImprovementSystem.modules.register('foodAndBeverage', foodAndBeverageModule);
+RoomForImprovementSystem.register('foodAndBeverage', foodAndBeverageModule);
 
 // scripts/kitchen.js
 const kitchenModule = {
@@ -44,7 +44,7 @@ const kitchenModule = {
     render: () => {},
     logic: () => {}
 };
-RoomForImprovementSystem.modules.register('kitchen', kitchenModule);
+RoomForImprovementSystem.register('kitchen', kitchenModule);
 
 // scripts/food-service.js
 const foodServiceModule = {
@@ -52,7 +52,7 @@ const foodServiceModule = {
     render: () => {},
     logic: () => {}
 };
-RoomForImprovementSystem.modules.register('foodService', foodServiceModule);
+RoomForImprovementSystem.register('foodService', foodServiceModule);
 
 // scripts/it.js
 const itModule = {
@@ -60,7 +60,7 @@ const itModule = {
     render: () => {},
     logic: () => {}
 };
-RoomForImprovementSystem.modules.register('it', itModule);
+RoomForImprovementSystem.register('it', itModule);
 
 // scripts/purchasing.js
 const purchasingModule = {
@@ -68,7 +68,7 @@ const purchasingModule = {
     render: () => {},
     logic: () => {}
 };
-RoomForImprovementSystem.modules.register('purchasing', purchasingModule);
+RoomForImprovementSystem.register('purchasing', purchasingModule);
 
 // scripts/finance.js
 const financeModule = {
@@ -76,7 +76,7 @@ const financeModule = {
     render: () => {},
     logic: () => {}
 };
-RoomForImprovementSystem.modules.register('finance', financeModule);
+RoomForImprovementSystem.register('finance', financeModule);
 
 // scripts/hr.js
 const hrModule = {
@@ -84,7 +84,7 @@ const hrModule = {
     render: () => {},
     logic: () => {}
 };
-RoomForImprovementSystem.modules.register('hr', hrModule);
+RoomForImprovementSystem.register('hr', hrModule);
 
 // scripts/security.js
 const securityModule = {
@@ -92,7 +92,7 @@ const securityModule = {
     render: () => {},
     logic: () => {}
 };
-RoomForImprovementSystem.modules.register('security', securityModule);
+RoomForImprovementSystem.register('security', securityModule);
 
 // scripts/activities.js
 const activitiesModule = {
@@ -100,7 +100,7 @@ const activitiesModule = {
     render: () => {},
     logic: () => {}
 };
-RoomForImprovementSystem.modules.register('activities', activitiesModule);
+RoomForImprovementSystem.register('activities', activitiesModule);
 
 // scripts/equipment-hire.js
 const equipmentHireModule = {
@@ -108,4 +108,4 @@ const equipmentHireModule = {
     render: () => {},
     logic: () => {}
 };
-RoomForImprovementSystem.modules.register('equipmentHire', equipmentHireModule);
+RoomForImprovementSystem.register('equipmentHire', equipmentHireModule);

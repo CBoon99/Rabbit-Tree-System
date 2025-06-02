@@ -55,6 +55,10 @@ const RoomForImprovementSystem = {
             }
         }
     },
+    register(name, module) {
+        this.modules[name] = module;
+        console.log(`✅ Registered plugin: ${name}`);
+    },
     async init() {
         try {
             console.log('🏨 Initializing RFI...');
