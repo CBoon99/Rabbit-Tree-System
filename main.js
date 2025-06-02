@@ -161,6 +161,39 @@ const RoomForImprovementSystem = {
     }
 };
 
+// Initialize default data if not present
+if (!localStorage.getItem('housekeepingData')) {
+    localStorage.setItem('housekeepingData', JSON.stringify({
+        settings: { language: 'en', theme: 'dark' },
+        rooms: [
+            { id: '101', name_en: 'Room 101', name_id: 'Kamar 101', status: 'pending' },
+            { id: '102', name_en: 'Room 102', name_id: 'Kamar 102', status: 'pending' },
+            { id: '103', name_en: 'Room 103', name_id: 'Kamar 103', status: 'pending' },
+            { id: '201', name_en: 'Room 201', name_id: 'Kamar 201', status: 'pending' },
+            { id: '202', name_en: 'Room 202', name_id: 'Kamar 202', status: 'pending' }
+        ],
+        staff: [
+            { id: 1, name: 'John Doe', role: 'staff', available: true },
+            { id: 2, name: 'Jane Smith', role: 'staff', available: true },
+            { id: 3, name: 'Mike Johnson', role: 'supervisor', available: true },
+            { id: 4, name: 'Sarah Wilson', role: 'manager', available: true }
+        ],
+        tasks: [
+            { id: 1, roomId: '101', section: 'Bathroom', name_en: 'Clean shower', name_id: 'Bersihkan shower' },
+            { id: 2, roomId: '101', section: 'Bathroom', name_en: 'Clean toilet', name_id: 'Bersihkan toilet' },
+            { id: 3, roomId: '101', section: 'Bedroom', name_en: 'Make bed', name_id: 'Rapikan tempat tidur' },
+            { id: 4, roomId: '101', section: 'Bedroom', name_en: 'Vacuum floor', name_id: 'Vakum lantai' }
+        ],
+        cleaningStatus: {},
+        laundryStatus: {
+            pending: [],
+            inProgress: [],
+            completed: []
+        },
+        issues: []
+    }));
+}
+
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => RoomForImprovementSystem.init());
 } else {

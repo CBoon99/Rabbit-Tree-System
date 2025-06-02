@@ -10,22 +10,27 @@ const roomsModule = {
     spotChecks: {},
     async init() {
         try {
-            console.log('🏠 Initializing Rooms...');
-            this.rooms = RoomForImprovementSystem.storage.get('room_data') || [];
-            this.roomHistory = RoomForImprovementSystem.storage.get('task_history') || {};
-            this.spotChecks = RoomForImprovementSystem.storage.get('spot_checks') || {};
+            const housekeepingData = JSON.parse(localStorage.getItem('housekeepingData') || '{}');
+            this.rooms = housekeepingData.rooms || [];
+            this.roomHistory = housekeepingData.cleaningStatus || {};
+            this.spotChecks = housekeepingData.spotChecks || {};
+            
             RoomForImprovementSystem.modules.rooms = this;
             this.populateRoomDropdowns();
-            console.log('✅ Rooms initialized');
         } catch (error) {
-            console.warn('❌ Rooms init failed:', error);
+            console.warn('Rooms initialization failed:', error);
         }
     },
     populateRoomDropdowns() {
         const roomSelect = document.getElementById('room-select');
         const issueRoomSelect = document.getElementById('issue-room');
-        roomSelect.innerHTML = '<option value="">Select a room...</option>';
-        issueRoomSelect.innerHTML = '<option value="">Select a room...</option>';
+        
+        if (!roomSelect || !issueRoomSelect) return;
+        
+        const defaultOption = '<option value="">Select a room...</option>';
+        roomSelect.innerHTML = defaultOption;
+        issueRoomSelect.innerHTML = defaultOption;
+        
         this.rooms.forEach(room => {
             const option = document.createElement('option');
             option.value = room.id;
@@ -236,4 +241,4 @@ const roomsModule = {
     }
 };
 
-RoomForImprovementSystem.registerModule('rooms', roomsModule);
+RoomForImprovementSystem.modules.rooms = roomsModule;
