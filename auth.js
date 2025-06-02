@@ -60,18 +60,26 @@ const authModule = {
         const loginSection = document.getElementById('login-section');
         const userDisplay = document.getElementById('user-display');
         const sections = ['rooms-section', 'tasks-section', 'schedule-section', 'analytics-section', 'laundry-section', 'front-office-section', 'dashboard-section'];
+        
         if (this.currentUser) {
-            loginSection.classList.add('hidden');
-            userDisplay.textContent = `${this.currentUser} (${this.currentRole})`;
+            if (loginSection) loginSection.classList.add('hidden');
+            if (userDisplay) userDisplay.textContent = `${this.currentUser} (${this.currentRole})`;
+            
             sections.forEach(id => {
                 if (id === 'dashboard-section' && !this.hasMinRole('manager')) return;
-                document.getElementById(id).classList.remove('hidden');
+                const section = document.getElementById(id);
+                if (section) section.classList.remove('hidden');
             });
+            
             RoomForImprovementSystem.updateUI();
         } else {
-            loginSection.classList.remove('hidden');
-            userDisplay.textContent = '';
-            sections.forEach(id => document.getElementById(id).classList.add('hidden'));
+            if (loginSection) loginSection.classList.remove('hidden');
+            if (userDisplay) userDisplay.textContent = '';
+            
+            sections.forEach(id => {
+                const section = document.getElementById(id);
+                if (section) section.classList.add('hidden');
+            });
         }
     },
     hasMinRole(role) {
