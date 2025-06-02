@@ -1,0 +1,160 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room for Improvement – Hotel Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="/manifest.json">
+</head>
+<body>
+    <header>
+        <h1 data-i18n="app_title">Room for Improvement</h1>
+        <div id="user-display"></div>
+        <button id="language-toggle" aria-label="Toggle Language">EN</button>
+    </header>
+    <nav class="main-nav">
+        <ul>
+            <li data-section="dashboard" class="hidden">Dashboard</li>
+            <li data-section="cleaning" class="active">Cleaning</li>
+            <li data-section="laundry">Laundry</li>
+            <li data-section="maintenance">Maintenance</li>
+            <li data-section="scheduler">Scheduler</li>
+        </ul>
+    </nav>
+    <main>
+        <h2 id="section-title">Cleaning</h2>
+        <section id="dashboard-section" class="section-content hidden">
+            <div class="dashboard-card">
+                <h3 data-i18n="rooms_cleaned">Rooms Cleaned Today</h3>
+                <p id="cleaned-today">0/5</p>
+            </div>
+            <div class="dashboard-card">
+                <h3 data-i18n="laundry_status">Laundry Status</h3>
+                <p id="laundry-pending">Pending: 0</p>
+                <p id="laundry-inprogress">In Progress: 0</p>
+                <p id="laundry-completed">Completed: 0</p>
+            </div>
+            <div class="dashboard-card">
+                <h3 data-i18n="spot_checks">Spot Checks</h3>
+                <p id="spot-checks-passed">Passed: 0</p>
+                <p id="spot-checks-failed">Failed: 0</p>
+            </div>
+            <div class="dashboard-card">
+                <h3 data-i18n="staff_on_duty">Staff on Duty</h3>
+                <p id="staff-on-duty">0</p>
+                <div id="staff-list"></div>
+            </div>
+            <div class="dashboard-card">
+                <h3 data-i18n="alerts">Alerts</h3>
+                <p id="missed-tasks">Missed Tasks: 0</p>
+            </div>
+        </section>
+        <section id="cleaning-section" class="section-content active">
+            <select id="room-select">
+                <option value="">Select a room...</option>
+            </select>
+            <select id="staff-select">
+                <option value="">Assign staff...</option>
+            </select>
+            <button id="start-cleaning" data-i18n="start_cleaning">Start Cleaning</button>
+            <button id="complete-cleaning" data-i18n="complete_cleaning" disabled>Complete Cleaning</button>
+            <div id="current-room"></div>
+            <div id="task-list"></div>
+        </section>
+        <section id="laundry-section" class="section-content">
+            <div class="laundry-tabs">
+                <button class="laundry-tab active" data-status="pending" data-i18n="pending">Pending</button>
+                <button class="laundry-tab" data-status="in-progress" data-i18n="in_progress">In Progress</button>
+                <button class="laundry-tab" data-status="completed" data-i18n="completed">Completed</button>
+            </div>
+            <select id="laundry-type">
+                <option value="linens">Linens</option>
+                <option value="towels">Towels</option>
+                <option value="uniforms">Uniforms</option>
+            </select>
+            <input type="number" id="laundry-quantity" value="1" min="1">
+            <select id="laundry-staff">
+                <option value="">Assign staff...</option>
+            </select>
+            <button id="add-laundry" data-i18n="add_laundry">Add Laundry</button>
+            <div id="laundry-list"></div>
+        </section>
+        <section id="maintenance-section" class="section-content">
+            <button id="report-issue" data-i18n="report_issue">Report Issue</button>
+            <div id="issues-reported">Issues Reported: 0</div>
+            <div id="recent-issues"></div>
+        </section>
+        <section id="scheduler-section" class="section-content">
+            <div id="current-week"></div>
+            <button id="prev-week" data-i18n="prev_week">Previous Week</button>
+            <button id="next-week" data-i18n="next_week">Next Week</button>
+            <div id="calendar-grid"></div>
+            <input type="date" id="schedule-date">
+            <select id="schedule-shift">
+                <option value="morning">Morning</option>
+                <option value="afternoon">Afternoon</option>
+                <option value="night">Night</option>
+            </select>
+            <button id="generate-schedule" data-i18n="generate_schedule">Generate Schedule</button>
+        </section>
+        <div id="issue-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <form id="issue-form">
+                    <select id="issue-room">
+                        <option value="">Select a room...</option>
+                    </select>
+                    <select id="issue-type">
+                        <option value="plumbing">Plumbing</option>
+                        <option value="electrical">Electrical</option>
+                        <option value="furniture">Furniture</option>
+                    </select>
+                    <textarea id="issue-description" placeholder="Describe the issue..."></textarea>
+                    <select id="issue-urgency">
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                    <button type="submit" data-i18n="submit_issue">Submit Issue</button>
+                </form>
+            </div>
+        </div>
+        <div id="task-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h3 id="task-modal-title"></h3>
+                <div id="task-modal-content"></div>
+                <button id="complete-task" data-i18n="complete_task">Complete Task</button>
+                <button id="add-comment" data-i18n="add_comment">Add Comment</button>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Core System -->
+    <script src="main.js"></script>
+    <script src="auth.js"></script>
+    <script src="i18n.js"></script>
+    <script src="lang.js"></script>
+    
+    <!-- Main Features -->
+    <script src="rooms.js"></script>
+    <script src="scheduler.js"></script>
+    <script src="laundry.js"></script>
+    <script src="maintenance.js"></script>
+    <script src="dashboard.js"></script>
+    <script src="concierge.js"></script>
+    
+    <!-- Additional Modules -->
+    <script src="equipment.js"></script>
+    <script src="activities.js"></script>
+    <script src="security.js"></script>
+    <script src="foodService.js"></script>
+    <script src="kitchen.js"></script>
+    <script src="finance.js"></script>
+    <script src="purchasing.js"></script>
+    <script src="hr.js"></script>
+    <script src="ai-assistant.js"></script>
+</body>
+</html>
